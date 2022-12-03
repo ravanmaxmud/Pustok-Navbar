@@ -19,6 +19,8 @@ namespace DemoApplication.Database
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<BookCategory> BookCategories { get; set; }
+        public DbSet<Navbar> Navbars { get; set; }
+        public DbSet<SubNavbar> SubNavbar { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

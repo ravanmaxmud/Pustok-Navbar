@@ -17,6 +17,7 @@ namespace DemoApplication.Validators.Admin.Navbar.Add
                 .MaximumLength(45)
                 .WithMessage("Maximum length should be 45");
 
+
             RuleFor(avm => avm.ToURL)
            .NotNull()
            .WithMessage("Title can't be empty")

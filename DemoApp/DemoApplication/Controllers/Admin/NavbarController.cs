@@ -50,7 +50,7 @@ namespace DemoApplication.Controllers.Admin
 
             if (_dataContext.Navbars.Any(a => a.Order == model.Order))
             {
-                ModelState.AddModelError(String.Empty, "Author is not found");
+                ModelState.AddModelError(String.Empty, "Order is not be the same");
                 return View("~/Views/Admin/Navbar/Add.cshtml", model);
             }
 
@@ -121,6 +121,11 @@ namespace DemoApplication.Controllers.Admin
             if (!ModelState.IsValid)
             {
                 return View("~/Views/Admin/Navbar/Update.cshtml", model);
+            }
+            if (_dataContext.Navbars.Any(a => a.Order == model.Order))
+            {
+                ModelState.AddModelError(String.Empty, "Order is not be the same");
+                return View("~/Views/Admin/Navbar/Add.cshtml", model);
             }
 
 

@@ -53,6 +53,15 @@ namespace DemoApplication.Controllers.Admin
                 ModelState.AddModelError(String.Empty,"Navbar Is Not Found");
                 return View("~/Views/Admin/SubNavbar/add.cshtml", model);
             }
+            if (_dataContext.SubNavbar.Any(a => a.Order == model.Order))
+            {
+                var navModel = new AddViewModel
+                {
+                    Navbar = await _dataContext.Navbars.Select(n => new NavbarListItemViewModel(n.Id, n.Name)).ToListAsync()
+                };
+                ModelState.AddModelError(String.Empty, "Order is not be the same");
+                return View("~/Views/Admin/SubNavbar/add.cshtml", navModel);
+            }
             var subNavbar = new SubNavbar
             {
                 Name = model.Name,
@@ -106,6 +115,15 @@ namespace DemoApplication.Controllers.Admin
             {
                 ModelState.AddModelError(String.Empty, "Navbar Is Not Found");
                 return View("~/Views/Admin/SubNavbar/update.cshtml", model);
+            }
+            if (_dataContext.SubNavbar.Any(a => a.Order == model.Order))
+            {
+                var navModel = new AddViewModel
+                {
+                    Navbar = await _dataContext.Navbars.Select(n => new NavbarListItemViewModel(n.Id, n.Name)).ToListAsync()
+                };
+                ModelState.AddModelError(String.Empty, "Order is not be the same");
+                return View("~/Views/Admin/SubNavbar/add.cshtml", navModel);
             }
 
             subNav.Name = model.Name;

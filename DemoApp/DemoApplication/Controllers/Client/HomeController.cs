@@ -22,13 +22,13 @@ namespace DemoApplication.Controllers.Client
             return View("~/Views/Client/Home/Index.cshtml");
         }
 
-        [HttpGet("contact")]
+        [HttpGet("contact", Name = "home-contact")]
         public ActionResult Contact()
         {
             return View("~/Views/Client/Home/Contact.cshtml");
         }
 
-        [HttpPost("contact")]
+        [HttpPost("contact",Name ="home-contact")]
         public ActionResult Contact([FromForm] CreateViewModel contactViewModel)
         {
             if (!ModelState.IsValid)
